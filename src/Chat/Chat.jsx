@@ -31,7 +31,6 @@ function Chat(props) {
   };
   useEffect(() => {
     fetchRooms();
-    console.log(allRoom);
   }, []);
 
   // Hàm này dùng để load dữ liệu message và nó sẽ chạy lại khi state id_user2 thay đổi
@@ -81,7 +80,7 @@ function Chat(props) {
       console.log("Received message:", data);
       fetchData(data.roomId);
     });
-  }, [socket]);
+  }, []);
 
   useEffect(() => {
     socket.on("delete-room", async (data) => {

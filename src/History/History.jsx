@@ -7,8 +7,6 @@ const socket = io("http://localhost:5000/admin", { transports: ["websocket"] });
 function History(props) {
   const [history, setHistory] = useState([]);
 
-  const [load, setLoad] = useState(false);
-
   const [text, setText] = useState("");
 
   useEffect(() => {
