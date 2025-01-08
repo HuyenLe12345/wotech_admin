@@ -16,8 +16,8 @@ const NewProduct = () => {
   const [errorQuantity, setErrorQuantity] = useState(false);
   const [errorShortDesc, setErrorShortDesc] = useState(false);
   const [errorLongDesc, setErrorLongDesc] = useState(false);
-
   const [redirect, setRedirect] = useState();
+  const [checkPush, setCheckPush] = useState(false);
   const { productId } = useParams();
   const location = useLocation();
   const path = location.pathname;
@@ -67,39 +67,40 @@ const NewProduct = () => {
                 const data = new FormData(e.target);
 
                 console.log(data);
+
                 let message;
+
                 if (path === `/update/${productId}`) {
                   const updateProduct = async () => {
                     const response = await ProductAPI.postUpdateProduct(
                       productId,
                       data
                     );
-                    message = response.message;
+                    message = response.success;
                     console.log(message);
                   };
                   updateProduct();
-                }
-                if (path === "/new") {
+                } else if (path === "/new") {
                   const addProduct = async () => {
                     const response = await ProductAPI.postNewProduct(data);
-                    message = response.message;
-                    console.log(message);
-                    setProductName("");
-                    setProductCategory("");
-                    setProductPrice("");
-                    setProductQuantity("");
-                    setShortDesc("");
-                    setLongDesc("");
+                    message = response.success;
+                    if (response.success) {
+                      setProductName("");
+                      setProductCategory("");
+                      setProductPrice("");
+                      setProductQuantity("");
+                      setShortDesc("");
+                      setLongDesc("");
+                    }
                   };
                   addProduct();
                 }
+                console.log("message", message);
 
-                alertify.set("notifier", "position", "bottom-left");
-                message && alertify.success(message);
-                //sau 2 giây, chuyển trang
                 setTimeout(() => {
                   setRedirect(true); // Redirect after a short delay
                 }, 2000);
+                window.alert("Bạn đã thực hiện thành công!");
               }
             }
           }
@@ -107,6 +108,7 @@ const NewProduct = () => {
       }
     }
   };
+
   if (redirect) {
     return <Redirect to="/products" />;
   }
@@ -192,7 +194,7 @@ const NewProduct = () => {
                 type="number"
                 className="form-control"
                 name="quantity"
-                placeholder="Enter Price"
+                placeholder="Enter Quantity"
                 defaultValue={productQuantity}
                 onChange={(event) => setProductQuantity(event.target.value)}
                 min="0"

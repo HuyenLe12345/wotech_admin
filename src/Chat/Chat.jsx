@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ChatRoomsAPI from "../API/ChatRoomsAPI";
-
+import { base_url } from "../url.js";
 import "./Chat.css";
 
 const io = require("socket.io-client");
-const socket = io("http://localhost:5000");
+const socket = io(base_url);
 
 function Chat(props) {
   const [allRoom, setAllRoom] = useState([]);

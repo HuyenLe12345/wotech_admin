@@ -7,6 +7,7 @@ import queryString from "query-string";
 import "./Login.css";
 
 const Login = () => {
+  console.log(process.env.REACT_APP_BASE_URL);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorEmail, setErrorEmail] = useState(false);
@@ -23,6 +24,7 @@ const Login = () => {
       };
       console.log("PARAMS", params);
       const query = "?" + queryString.stringify(params);
+      console.log(query);
       const response = await UserAPI.postLogin(query);
       console.log("response", response);
       if (response && response.error) {

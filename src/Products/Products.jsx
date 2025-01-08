@@ -5,9 +5,10 @@ import Pagination from "./Component/Pagination";
 import Confirm from "./Component/modal/confirm";
 import { Link } from "react-router-dom";
 import alertify from "alertifyjs";
-const io = require("socket.io-client");
-const socket = io("http://localhost:5000");
+import { base_url, isValidURL } from "../url.js";
 
+const io = require("socket.io-client");
+const socket = io(base_url);
 function Products(props) {
   const [products, setProducts] = useState([]);
   const [openConfirm, setOpenConfirm] = useState(false);
@@ -183,7 +184,11 @@ function Products(props) {
                               <td>{value.price}</td>
                               <td>
                                 <img
-                                  src={value.img1}
+                                  src={
+                                    isValidURL(value.img1)
+                                      ? value.img1
+                                      : `${base_url}/${value.img1}`
+                                  }
                                   style={{
                                     height: "60px",
                                     width: "60px",

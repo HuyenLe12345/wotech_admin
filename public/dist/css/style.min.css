@@ -15943,14 +15943,3 @@ ul.list-style-none li a:hover {
   font-weight: 400;
   font-style: normal;
 }
-.alertify-notifier {
-  color: #ffffff;
-  font-size: 1rem;
-  font-family: "Poppins", sans-serif;
-  border: 2px solid #ffffff !important;
-}
-
-.ajs-message {
-  /* background-color: #00ccff !important; */
-  width: 20rem !important;
-}

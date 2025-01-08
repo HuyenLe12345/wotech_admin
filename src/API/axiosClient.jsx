@@ -1,10 +1,11 @@
 // api/axiosClient.js
 import axios from "axios";
 import queryString from "query-string";
+import { base_url } from "../url.js";
 // Set up default config for http requests here
 // Please have a look at here `https://github.com/axios/axios#requestconfig` for the full list of configs
 const axiosClient = axios.create({
-  baseURL: "http://localhost:5000/admin",
+  baseURL: `${base_url}/admin`,
   headers: {
     "content-type": "application/json",
   },

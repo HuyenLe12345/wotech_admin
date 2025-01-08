@@ -12,6 +12,7 @@ const UserAPI = {
   },
   postLogin: (query) => {
     const url = `/login/${query}`;
+    console.log(url);
     return axiosClient.post(url);
   },
   postSignUp: (query) => {

@@ -13,3 +13,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.alertify-notifier {
+  color: #ffffff;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  border: 2px solid #ffffff !important;
+}
+
+.ajs-message {
+  /* background-color: #00ccff !important; */
+  width: 20rem !important;
+}
