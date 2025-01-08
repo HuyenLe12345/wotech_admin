@@ -8,7 +8,9 @@ import alertify from "alertifyjs";
 import { base_url, isValidURL } from "../url.js";
 
 const io = require("socket.io-client");
-const socket = io(base_url);
+const socket = io(base_url,{
+  transports: ["websocket"],
+});
 function Products(props) {
   const [products, setProducts] = useState([]);
   const [openConfirm, setOpenConfirm] = useState(false);
