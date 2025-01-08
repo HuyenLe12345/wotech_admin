@@ -4,7 +4,9 @@ import { base_url } from "../url.js";
 import "./Chat.css";
 
 const io = require("socket.io-client");
-const socket = io(base_url);
+const socket = io(base_url, {
+  transports: ["websocket"],
+});
 
 function Chat(props) {
   const [allRoom, setAllRoom] = useState([]);
